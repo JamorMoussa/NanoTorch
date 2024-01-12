@@ -1,6 +1,7 @@
 # NeuraNet
 
-**NeuraNet** is deep learning library (mini frameworks) inspired from PyTorch framework, I create using
-only **Math** and **Numpy** :). My purpose here not create a powerful deep learning framework (maybe in the 
-future), but the only reason is more understand how deep learning frameworks like PyTorch, TensorFlow work 
-behind the scenes. 
+**NeuraNet** is a deep learning library (mini framework) inspired by the PyTorch framework, which 
+I created using only **Math** and **Numpy** :). My purpose here is not to create a powerful deep 
+learning framework (maybe in the future), but solely to understand how deep learning frameworks like PyTorch and TensorFlow work behind the scenes.
+
+
