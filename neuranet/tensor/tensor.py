@@ -10,7 +10,7 @@ class Tensor(np.ndarray):
     """
     def __new__(cls, input: 'Tensor') -> 'Tensor':
         """
-            This method will create a Tensor.
+            This class method will create a Tensor.
             
             Args:
                 input: is Tensor, list, tuple, np.ndarray. These are the only types supported in the current version.
@@ -37,21 +37,54 @@ class Tensor(np.ndarray):
         if not isinstance(input, (Tensor, list, tuple, np.ndarray)): 
             raise ValueError(f"the 'input' attributes must be list, tuple, numpy.ndarray. But '{input.__class__.__name__}' is given") 
         
+        # reshape to 2-d if the input is 1-d:
         if not isinstance(input, np.ndarray): input = np.array(input)
         if input.ndim ==1 : input = input.reshape(1, -1)
         
+        # create a view : 
         obj = np.asanyarray(input).view(cls)
 
         return obj
 
     @staticmethod
     def rand(*shape: tuple[int]) -> 'Tensor':
+        """
+            This static method creates a Tensor with random values.
+
+            Args:
+                shape: a tuple of integers, defining the shape of the Tensor.
+
+            Returns:
+                A Tensor.
+        """
+
         return Tensor(np.random.rand(*shape))
 
     @staticmethod
     def zeros(*shape: tuple[int]) -> 'Tensor':
+        """
+            This static method creates a Tensor of zeros.
+
+            Args:
+                shape: a tuple of integers, defining the shape of the Tensor.
+
+            Returns:
+                A Tensor.
+        """
+
         return Tensor(np.zeros(shape))
     
     @staticmethod
-    def dot(t1: 'Tensor', t2: 'Tensor') -> 'Tensor':
-        return Tensor(np.dot(t1, t2))
+    def dot(tensor1: 'Tensor', tensor2: 'Tensor') -> 'Tensor':
+        """
+            This static method defines the dot product.
+
+            Args:
+                tensor1: the first Tensor.
+                tensor2: the second Tensor.
+
+            Returns:
+                A Tensor, the result of the dot product of tensor1 and tensor2.
+        """
+
+        return Tensor(np.dot(tensor1, tensor2))
