@@ -2,7 +2,6 @@ import neuranet as nnt
 import neuranet.nn as nn 
 
 class NewClass(nn.Module):
-
     def __init__(self):
         super().__init__()
 
@@ -17,3 +16,5 @@ class NewClass(nn.Module):
     
 
 n = NewClass()
+
+print(NewClass.i) 
