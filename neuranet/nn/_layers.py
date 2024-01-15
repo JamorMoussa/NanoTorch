@@ -19,5 +19,5 @@ class Linear(Layer):
 
     def backward(self, out_grad: Tensor) -> Tensor:
         self.grad = Tensor.dot(self.input.T, out_grad)
-        return dot(out_grad, self._parameters.T)
+        return dot(out_grad, self._parameters)
     

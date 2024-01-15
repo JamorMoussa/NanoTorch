@@ -1,4 +1,4 @@
-from .. import Tensor, multiply
+from .. import Tensor, multiply, tensor2strings
 from abc import ABC, abstractmethod
 from typing import Dict, List, Callable
 
@@ -34,9 +34,16 @@ class Module(ABC):
 
 class Layer(Module):
     _parameters: List[Tensor] 
+    grad: Tensor
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}({self._parameters})"
+        pram_str = tensor2strings(self._parameters
+                                  ).replace('\n ', '\n\t\t')
+        
+        grad_str = tensor2strings(self.grad
+                                  ).replace('\n ', '\n\t\t')
+        
+        return f"{self.__class__.__name__}(\n\tParamerts:\n\t\t{pram_str}\n\tgrad:\n\t\t{grad_str}\n)"
     
 
 class Activation(Layer):
