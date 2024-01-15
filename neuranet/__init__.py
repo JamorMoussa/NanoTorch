@@ -1,2 +1,2 @@
-from .tensor import Tensor
+from .tensor import *
 from . import nn 
