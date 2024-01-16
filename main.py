@@ -1,20 +1,21 @@
 import neuranet as nnt
+from neuranet import Tensor
 import neuranet.nn as nn 
 
 
-l = nn.Linear(10, 3)
-l2 = nn.Linear(3, 2)
+class MLP(nn.Module):
 
-print(l(l2((nnt.rand(4, 2)))).shape)
+    def __init__(self):
 
-"""
-Linear(
-    Paramerts:
-               [[0.70942343 0.77254096 0.12916525 0.09169435 0.21316721]
-               [0.09420515 0.29974063 0.1239921  0.5242108  0.1645537 ]
-               [0.60643729 0.99028322 0.31028219 0.46085306 0.12154007]]
-    grad: 
+        self.l1 = nn.Linear(3, 2)
+        self.l2 = nn.Linear(2, 3)
+        self.l3 = nn.Linear(3, 5)
 
-    )
+    def forward(self, input: Tensor) -> Tensor:
+        out = self.l1(input)
+        out = self.l2(out)
+        return self.l3(out)
+    
+model = MLP()
 
-"""
+print(model.layers()[0].grad)

@@ -3,28 +3,27 @@ from abc import ABC, abstractmethod
 from typing import Dict, List, Callable
 
 
-__all__ = ["Module", "Layer"]
+__all__ = ["Module", "Layer", "Activation"]
     
 class Module(ABC):
 
-    _modules: Dict[str, 'Module'] = dict()
+    _modules: List['Module'] = []
 
     def __setattr__(self, name, value) -> None:
         super().__setattr__(name, value)
-        if isinstance(value, Layer): self.add_module(name, value)
+        if isinstance(value, Layer): self.add_module(value)
 
     
-    def add_module(self, name: str, module: 'Module') -> None: 
-        self._modules[name] = module
+    def add_module(self, module: 'Module') -> None: 
+        self._modules.append(module)
     
-    def children(self) -> Dict[str, 'Module']:
+    def layers(self) -> List['Module']:
         return self._modules
 
     @abstractmethod
     def forward(self, input: Tensor) -> Tensor:
         ...
 
-    @abstractmethod
     def backward(self, out_grad: Tensor) -> Tensor:
         ...
 
@@ -33,11 +32,30 @@ class Module(ABC):
 
 
 class Layer(Module):
-    _parameters: List[Tensor] 
-    grad: Tensor
+    _parameter: Tensor
+    _grad: Tensor
+
+    def __init__(self):
+        super().__init__()
+
+    @property
+    def parameter(self) -> Tensor:
+        return self._parameter
+    
+    @parameter.setter
+    def parameter(self, parameter: Tensor) -> None:
+        self._parameter = parameter 
+
+    @property
+    def grad(self) -> Tensor:
+        return self._grad
+    
+    @grad.setter
+    def grad(self, grad: Tensor) -> None:
+        self._grad = grad 
 
     def __repr__(self) -> str:
-        pram_str = tensor2strings(self._parameters
+        pram_str = tensor2strings(self._parameter
                                   ).replace('\n ', '\n\t\t')
         
         grad_str = tensor2strings(self.grad

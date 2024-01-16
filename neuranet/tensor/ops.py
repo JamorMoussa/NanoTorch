@@ -18,11 +18,11 @@ def dot(tensor1: Tensor, tensor2: Tensor) -> Tensor:
             A Tensor, the result of the dot product of tensor1 and tensor2.
     """
 
-    if tensor1.shape[1] != tensor2.shape[1]:
-        s1, s2 = tensor1.shape, tensor2.shape
-        raise ValueError(f": shapes {s1} and {s2} not aligned: {s1[1]} != {s2[0]}")
+    # if tensor1.shape[1] != tensor2.shape[0]:
+    #     s1, s2 = tensor1.shape, tensor2.shape
+    #     raise ValueError(f": shapes {s1} and {s2} not aligned: {s1[1]} != {s2[0]}")
     
-    return Tensor(np.dot(tensor1, tensor2.T))
+    return Tensor(np.dot(tensor1, tensor2))
 
 
 def rand(*shape: Tuple[int]) -> Tensor:

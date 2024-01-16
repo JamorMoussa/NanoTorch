@@ -7,9 +7,11 @@ __all__ = ["Linear", ]
 class Linear(Layer):
 
     def __init__(self, *shape: Tuple[int]):
+        super().__init__()
 
-        self._parameters: Tensor = rand(*shape)
-        self.grad: Tensor = zeros(*shape)
+        self._parameter: Tensor = rand(*shape)
+        self._grad: Tensor = zeros(*shape)
+
         self.input: Tensor = zeros(*shape)
         self.p_shape: Tuple[int] = shape
         
