@@ -3,7 +3,7 @@ from typing import Tuple
 import numpy as np 
 
 
-__all__ = ["dot", "rand", "zeros", "multiply" ,"tensor2strings"]
+__all__ = ["dot", "rand", "zeros", "multiply" ,"tensor2strings", "sum"]
 
 
 def dot(tensor1: Tensor, tensor2: Tensor) -> Tensor:
@@ -58,6 +58,10 @@ def multiply(tensor1: Tensor, tensor2: Tensor) -> Tensor:
     #TODO: write docstrings for multiply:
      
     return Tensor(np.multiply(tensor1, tensor2))
+
+
+def sum(tensor: Tensor) -> Tensor:
+    return Tensor(np.sum(tensor))
 
 
 def tensor2strings(tensor: Tensor) -> str:

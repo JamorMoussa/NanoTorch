@@ -1,3 +1,3 @@
 from .base import *
-from .layers import *
+from .modules import *
 from .sequential import *

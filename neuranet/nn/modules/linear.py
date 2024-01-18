@@ -1,6 +1,6 @@
 from typing import Tuple
-from .base import Layer
-from .. import Tensor, rand, zeros, dot 
+from ..base import Layer
+from ... import Tensor, rand, zeros, dot 
 
 __all__ = ["Linear", ]
 
@@ -17,9 +17,8 @@ class Linear(Layer):
         
     def forward(self, input: Tensor) -> Tensor:
         self.input = input
-        return dot(input, self._parameters)
+        return dot(input, self._parameter)
 
     def backward(self, out_grad: Tensor) -> Tensor:
         self.grad = Tensor.dot(self.input.T, out_grad)
-        return dot(out_grad, self._parameters)
-    
+        return dot(out_grad, self._parameter)

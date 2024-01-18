@@ -16,6 +16,6 @@ class MLP(nn.Module):
         out = self.l2(out)
         return self.l3(out)
     
+    
 model = MLP()
 
-print(model.layers()[0].grad)
