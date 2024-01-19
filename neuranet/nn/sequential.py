@@ -1,5 +1,5 @@
-from neuranet import Tensor
 from .base import Module, Layer
+from neuranet import Tensor
 from typing import List
 from .. import Tensor
 

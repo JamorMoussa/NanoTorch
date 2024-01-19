@@ -1,16 +1,22 @@
-from neuranet import Tensor
-from ... import Tensor, sum
-from typing import List
-from ...nn import Layer, Module
 from abc import ABC, abstractmethod
+from ...nn import Layer, Module
+from ... import Tensor, sum
+from neuranet import Tensor
+from typing import List, Any, Self
 
-__all__ = ["MSELoss",]
+__all__ = ["Loss", "MSELoss"]
 
 class Loss(Module):
+    
+    out_grad: Tensor
 
     def __init__(self, layers: List[Layer]) -> None:
         super(Loss, self).__init__()
         self.layers: List[Layer] = layers
+
+    @abstractmethod
+    def forward(self, *args, **kwargs) -> Self:
+        ...
 
     @abstractmethod
     def backward(self, *args, **kwargs) -> None:
@@ -26,10 +32,11 @@ class MSELoss(Loss):
     # def forward(self, y_pred: Tensor, y: Tensor) -> Tensor:
     #     return Tensor(sum((y_pred - y)**2))
     
-    def forward(self, input: Tensor) -> Tensor:
-        ...
+    def forward(self, y_pred: Tensor, y: Tensor) -> Self:
+        self.out_grad = Tensor(2*(y_pred - y)) 
+        return self
 
-    def backward(self, y_pred: Tensor, y: Tensor) -> None:
-        grad : Tensor = Tensor((y_pred - y))
+    def backward(self) -> None:
+        grad = self.out_grad
         for layer in reversed(self.layers):
             grad = layer.backward(grad)

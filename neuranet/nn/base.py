@@ -21,14 +21,14 @@ class Module(ABC):
         return self._modules
 
     @abstractmethod
-    def forward(self, input: Tensor) -> Tensor:
+    def forward(self, *args, **kwargs) -> Tensor:
         ...
 
     def backward(self, out_grad: Tensor) -> Tensor:
         ...
 
-    def __call__(self, input: Tensor) -> Tensor:
-        return self.forward(input)
+    def __call__(self, *args, **kwargs) -> Tensor:
+        return self.forward(*args, **kwargs)
 
 
 class Layer(Module):
@@ -53,6 +53,9 @@ class Layer(Module):
     @grad.setter
     def grad(self, grad: Tensor) -> None:
         self._grad = grad 
+
+    def zero_grad(self):
+        self._grad = None
 
     def __repr__(self) -> str:
         pram_str = tensor2strings(self._parameter
