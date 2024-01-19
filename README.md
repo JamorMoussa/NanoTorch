@@ -4,8 +4,6 @@
 I created using only **Math** and **Numpy** :). My purpose here is not to create a powerful deep 
 learning framework (maybe in the future), but solely to understand how deep learning frameworks like PyTorch and TensorFlow work behind the scenes.
 
----
-
 ## Neural Networks:
 
 Let's explore an example of building a simple neural network (essentially a Linear Regression model) with **NeuraNet**:
@@ -32,7 +30,7 @@ mse = nn.MSELoss(model.layers())
 
 opt = nnt.optim.GD(model.layers(), lr=0.001)
 
-for epoch in range(3000):
+for epoch in range(30):
 
     for xi, yi in zip(X_train, y):
 
