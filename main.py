@@ -23,7 +23,7 @@ mse = nn.MSELoss(model.layers())
 opt = nnt.optim.GD(model.layers(), lr=0.001)
 
 
-for epoch in range(3000):
+for epoch in range(300):
 
     for xi, yi in zip(X_train, y):
 
