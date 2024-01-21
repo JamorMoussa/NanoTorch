@@ -1,29 +1,40 @@
 import neuranet as nnt
-import neuranet.nn as nn 
+import neuranet.nn as nn
+import numpy as np  
 
 
 class MLP(nn.Module):
 
     def __init__(self):
 
-        self.l1 = nn.Linear(3, 1)
+        self.l1 = nn.Linear(1, 5)
+        self.a1 = nn.ReLU()
+        self.l2 = nn.Linear(5, 3)
+        self.a2 = nn.ReLU()
+        self.l3 = nn.Linear(3, 1)
 
     def forward(self, input: nnt.Tensor) -> nnt.Tensor:
-        return self.l1(input)
+        out = self.l1(input)
+        out = self.a1(out)
+        out = self.l2(out)
+        out = self.a2(out)
+        return self.l3(out)
     
 
-X_train = nnt.rand(100, 3)
+X_train = nnt.rand(100, 1)
 
-y = nnt.dot(X_train, nnt.Tensor([1, -2, 3]).T)    
+#y = nnt.dot(X_train, nnt.Tensor([1, -2, 3]).T)  
+
+y = nnt.Tensor(X_train**2 + 1)  
     
 model = MLP()
 
 mse = nn.MSELoss(model.layers())
 
-opt = nnt.optim.GD(model.layers(), lr=0.001)
+opt = nnt.optim.GD(model.layers(), lr=0.01)
 
 
-for epoch in range(300):
+for epoch in range(100):
 
     for xi, yi in zip(X_train, y):
 
@@ -38,5 +49,6 @@ for epoch in range(300):
         opt.step()
 
 
-print(model.layers()[0].parameter)
+layers = model.layers()
 
+print(model(2))

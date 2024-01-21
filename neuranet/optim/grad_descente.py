@@ -1,5 +1,5 @@
 from typing import List
-from neuranet.nn import Layer
+from neuranet.nn import Layer, Activation
 from . import Optimizer
 
 
@@ -16,6 +16,6 @@ class GD(Optimizer):
         self.lr = lr 
 
     def step(self):
-        for layer in self.layers:
+        for layer in filter( lambda layer: not isinstance(layer, Activation), self.layers):
             layer.parameter -= self.lr * layer.grad
     

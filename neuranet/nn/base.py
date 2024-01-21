@@ -1,6 +1,6 @@
 from .. import Tensor, multiply, tensor2strings
 from abc import ABC, abstractmethod
-from typing import Dict, List, Callable
+from typing import Dict, List, Callable, Any
 
 
 __all__ = ["Module", "Layer", "Activation"]
@@ -27,7 +27,7 @@ class Module(ABC):
     def backward(self, out_grad: Tensor) -> Tensor:
         ...
 
-    def __call__(self, *args, **kwargs) -> Tensor:
+    def __call__(self, *args, **kwargs) -> Any:
         return self.forward(*args, **kwargs)
 
 

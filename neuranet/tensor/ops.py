@@ -1,9 +1,10 @@
+from typing import Tuple, Any
 from .tensor import Tensor
-from typing import Tuple
 import numpy as np 
 
 
-__all__ = ["dot", "rand", "zeros", "multiply" ,"tensor2strings", "sum"]
+__all__ = ["dot", "rand", "zeros", "multiply" ,"tensor2strings", "sum"
+           , "where"]
 
 
 def dot(tensor1: Tensor, tensor2: Tensor) -> Tensor:
@@ -62,6 +63,10 @@ def multiply(tensor1: Tensor, tensor2: Tensor) -> Tensor:
 
 def sum(tensor: Tensor) -> Tensor:
     return Tensor(np.sum(tensor))
+
+
+def where(tensor: Tensor[bool], val1: Any, val2: Any):
+    return Tensor(np.where(tensor, val1, val2))
 
 
 def tensor2strings(tensor: Tensor) -> str:

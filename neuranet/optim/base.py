@@ -1,4 +1,4 @@
-from ..nn import Layer
+from ..nn import Layer, Activation
 from typing import List
 from abc import ABC, abstractmethod
 
@@ -13,7 +13,8 @@ class Optimizer(ABC):
         self.layers = layers
 
     def zero_grad(self) ->None:
-        for layer in self.layers: layer.zero_grad()
+        for layer in filter( lambda layer: not isinstance(layer, Activation), self.layers): 
+            layer.zero_grad() 
 
     @abstractmethod
     def step(self):
