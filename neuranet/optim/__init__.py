@@ -1,2 +1,2 @@
 from .base import *
-from .grad_descente import *
+from .grad_desc import *
