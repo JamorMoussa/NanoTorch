@@ -8,7 +8,7 @@ __all__ = ["Loss", "MSELoss"]
 
 class Loss(Module):
     
-    out_grad: Tensor
+    out_grad: Tensor = None 
 
     def __init__(self, layers: List[Layer]) -> None:
         super(Loss, self).__init__()
@@ -18,9 +18,10 @@ class Loss(Module):
     def forward(self, *args, **kwargs) -> Self:
         ...
 
-    @abstractmethod
-    def backward(self, *args, **kwargs) -> None:
-        ...
+    def backward(self) -> None:
+        grad = self.out_grad
+        for layer in reversed(self.layers):
+            grad = layer.backward(grad)
 
 
 
@@ -32,8 +33,3 @@ class MSELoss(Loss):
     def forward(self, y_pred: Tensor, y: Tensor) -> Loss:
         self.out_grad = (2/y.shape[0])*Tensor((y_pred - y)) 
         return self
-
-    def backward(self) -> None:
-        grad = self.out_grad
-        for layer in reversed(self.layers):
-            grad = layer.backward(grad)
