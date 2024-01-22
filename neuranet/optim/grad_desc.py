@@ -15,7 +15,7 @@ class GD(Optimizer):
         super().__init__(layers)
         self.lr = lr 
 
-    def step(self):
-        for layer in filter( lambda layer: not isinstance(layer, Activation), self.layers):
+    def step(self) -> None:
+        for layer in self.wActivLayers:
             layer.parameter -= self.lr * layer.grad
     
