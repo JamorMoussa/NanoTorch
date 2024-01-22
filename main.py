@@ -41,9 +41,7 @@ opt = nnt.optim.GD(model.layers(), lr=0.01)
 
 
 for epoch in range(100):
-
-    #for xi, yi in zip(X_train, y):
-
+    
     for i in range(0, 1000, 20):
         opt.zero_grad()
 
