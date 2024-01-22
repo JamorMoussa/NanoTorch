@@ -30,9 +30,11 @@ y = nnt.dot(X_train, nnt.Tensor([[1, -2, 3],
 # y = nnt.Tensor(X_train**2 + 1)  
 
 model = nn.Sequential([
-    nn.Linear(3, 20),
-    # nn.ReLU(),
-    nn.Linear(20, 2)
+    nn.Linear(3, 4),
+    nn.LReLU(),
+    nn.Linear(4, 5),
+    nn.LReLU(),
+    nn.Linear(5, 2)
 ])
 
 mse = nn.MSELoss(model.layers())
@@ -40,7 +42,7 @@ mse = nn.MSELoss(model.layers())
 opt = nnt.optim.GD(model.layers(), lr=0.01)
 
 
-for epoch in range(100):
+for epoch in range(10):
     
     #for xi, yi in zip(X_train, y):
     
@@ -51,6 +53,9 @@ for epoch in range(100):
         y_predi = model(nnt.Tensor(X_train[i:i+50]))
 
         loss = mse(y_predi, nnt.Tensor(y[i:i+50]))
+
+        if i%1000 == 0:
+            print(loss.items())
 
         loss.backward()
 
