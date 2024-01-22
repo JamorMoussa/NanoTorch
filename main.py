@@ -24,15 +24,16 @@ import neuranet.nn as nn
 
 X_train = nnt.rand(1000, 3)
 
-y = nnt.dot(X_train, nnt.Tensor([[1, -2, 3], 
-                                 [2, 0, 1]]).T)  
+y = nnt.dot(X_train, nnt.Tensor([[1, -2, 3],
+                                [1, 1, 1],
+                                [0,-2,0]]).T)  
 
-#y = nnt.Tensor(X_train**2 + 1)  
-  
+# y = nnt.Tensor(X_train**2 + 1)  
+
 model = nn.Sequential([
     nn.Linear(3, 2),
-    nn.ReLU(),
-    nn.Linear(2, 1)
+    # nn.ReLU(),
+    nn.Linear(2, 3)
 ])
 
 mse = nn.MSELoss(model.layers())
@@ -42,12 +43,15 @@ opt = nnt.optim.GD(model.layers(), lr=0.01)
 
 for epoch in range(100):
     
-    for i in range(0, 1000, 20):
+    #for xi, yi in zip(X_train, y):
+    
+    for i in range(1000):
+
         opt.zero_grad()
 
-        y_predi = model(nnt.Tensor(X_train[i:i+20]))
+        y_predi = model(nnt.Tensor(X_train[i:i+40]))
 
-        loss = mse(y_predi, nnt.Tensor(y[i:i+20]))
+        loss = mse(y_predi, nnt.Tensor(y[i:i+40]))
 
         loss.backward()
 
@@ -56,4 +60,4 @@ for epoch in range(100):
 
 layers = model.layers()
 
-print(model(1))
+print(type(model(1)))

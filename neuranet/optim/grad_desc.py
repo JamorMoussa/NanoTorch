@@ -12,8 +12,8 @@ class GD(Optimizer):
             self, layers: List[Layer],
             lr: float         
     ) -> None:
-        super().__init__(layers)
-        self.lr = lr 
+        super(GD, self).__init__(layers)
+        self.lr: float = lr 
 
     def step(self) -> None:
         for layer in self.wActivLayers:
