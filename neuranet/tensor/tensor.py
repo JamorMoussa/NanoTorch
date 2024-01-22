@@ -1,5 +1,5 @@
 import numpy as np 
-
+from typing import Self
 
 
 class Tensor(np.ndarray):
@@ -8,7 +8,7 @@ class Tensor(np.ndarray):
                 ndarray base class, which means that has all features supported by the numpy.adarray. 
                 but will include new features in the feature release like 'autograd'.
     """
-    def __new__(cls, input: 'Tensor') -> 'Tensor':
+    def __new__(cls, input: Self) -> Self:
         """
             This class method will create a Tensor.
             
@@ -39,7 +39,7 @@ class Tensor(np.ndarray):
         
         # reshape to 2-d if the input is 1-d:
         if not isinstance(input, np.ndarray): input = np.array(input)
-        if input.ndim ==1 : input = input.reshape(1, -1)
+        if input.ndim == 1: input = input.reshape(1, -1)
         
         # create a view : 
         obj = np.asanyarray(input).view(cls)
