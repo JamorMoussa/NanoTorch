@@ -1,23 +1,23 @@
 from .. import Tensor, multiply, tensor2strings
 from abc import ABC, abstractmethod
-from typing import Dict, List, Callable, Any
+from typing import List, Callable, Self
 
 
 __all__ = ["Module", "Layer", "Activation"]
     
 class Module(ABC):
 
-    _modules: List['Module'] = []
+    _modules: List[Self] = []
 
     def __setattr__(self, name, value) -> None:
         super().__setattr__(name, value)
         if isinstance(value, Layer): self.add_module(value)
 
     
-    def add_module(self, module: 'Module') -> None: 
+    def add_module(self, module: Self) -> None: 
         self._modules.append(module)
     
-    def layers(self) -> List['Module']:
+    def layers(self) -> List[Self]:
         return self._modules
 
     @abstractmethod
@@ -27,7 +27,7 @@ class Module(ABC):
     def backward(self, out_grad: Tensor) -> Tensor:
         ...
 
-    def __call__(self, *args, **kwargs) -> Any:
+    def __call__(self, *args, **kwargs) -> Self:
         return self.forward(*args, **kwargs)
 
 
