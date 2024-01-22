@@ -29,7 +29,7 @@ class MSELoss(Loss):
     def __init__(self, layers: List[Layer]) ->None:
         super(MSELoss, self).__init__(layers)
     
-    def forward(self, y_pred: Tensor, y: Tensor) -> Self:
+    def forward(self, y_pred: Tensor, y: Tensor) -> Loss:
         self.out_grad = Tensor(2*(y_pred - y)) 
         return self
 
