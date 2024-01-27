@@ -61,8 +61,8 @@ def multiply(tensor1: Tensor, tensor2: Tensor) -> Tensor:
     return Tensor(np.multiply(tensor1, tensor2))
 
 
-def sum(tensor: Tensor) -> Tensor:
-    return Tensor(np.sum(tensor))
+def sum(*args, **kwargs) -> Tensor:
+    return Tensor(np.sum(*args, **kwargs))
 
 def norm(input: Tensor) -> Tensor:
     return Tensor(np.array(np.linalg.norm(input)))

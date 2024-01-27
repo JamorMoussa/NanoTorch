@@ -22,31 +22,32 @@ import neuranet.nn as nn
 
     
 
-X_train = nnt.rand(1000, 3)
+X_train = nnt.rand(1000, 1)
 
-y = nnt.dot(X_train, nnt.Tensor([[1, -2, 3],
-                                [1, 1, 1]]).T)  
+# y = nnt.dot(X_train, nnt.Tensor([[1, -2, 3],
+#                                 [1, 1, 1]]).T)  
 
-# y = nnt.Tensor(X_train**2 + 1)  
+y = nnt.Tensor(nnt.dot(X_train, nnt.Tensor([2])) + 1)
 
 model = nn.Sequential([
-    nn.Linear(3, 4),
-    nn.LReLU(),
-    nn.Linear(4, 5),
-    nn.LReLU(),
-    nn.Linear(5, 2)
+    nn.Linear(1, 2),
+    nn.ReLU(),
+    nn.Linear(2, 3),
+    nn.ReLU(),
+    nn.Linear(3, 2),
+    nn.ReLU(),
+    nn.Linear(2, 1)
 ])
 
 mse = nn.MSELoss(model.layers())
 
 opt = nnt.optim.GD(model.layers(), lr=0.01)
 
-
 for epoch in range(10):
     
     #for xi, yi in zip(X_train, y):
     
-    for i in range(1000):
+    for i in range(0, 1000, 50):
 
         opt.zero_grad()
 
@@ -64,4 +65,5 @@ for epoch in range(10):
 
 layers = model.layers()
 
-print(model(1))
+print(model(2))
+
