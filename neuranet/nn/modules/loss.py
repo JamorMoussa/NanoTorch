@@ -1,7 +1,6 @@
-from abc import abstractmethod
-from neuranet.nn import Layer, Module
-from neuranet import Tensor
 from neuranet import Tensor, zeros, norm
+from neuranet.nn import Layer, Module
+from abc import abstractmethod
 from typing import List, Self
 
 __all__ = ["Loss", "MSELoss"]
