@@ -29,11 +29,11 @@ X_train = nnt.rand(1000, 2)
 
 y = nnt.Tensor(nnt.dot(X_train, nnt.Tensor([1, -2]).T))
 
-# model = nn.Sequential(
-#     nn.Linear(2, 3),
-#     nn.ReLU(),
-#     nn.Linear(3, 1)
-# )
+model = nn.Sequential(
+    nn.Linear(2, 3),
+    nn.ReLU(),
+    nn.Linear(3, 1)
+)
 
 model = nn.Sequential()
 model.add_layer(nn.Linear(2, 3))
