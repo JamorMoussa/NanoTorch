@@ -1,5 +1,5 @@
 from neuranet.nn.base import Activation
-import neuranet.nn.functionnal as F 
+import neuranet.nn.functional as F 
 
 __all__ = ["ReLU"]
 

@@ -1,3 +1,3 @@
 from .base import *
 from .modules import *
-from . import functionnal
+from . import functional
