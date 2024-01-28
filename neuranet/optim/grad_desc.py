@@ -1,5 +1,5 @@
 from typing import List
-from neuranet.nn import Layer, Activation
+from neuranet.nn import Layer
 from . import Optimizer
 
 

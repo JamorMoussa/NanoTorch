@@ -1,4 +1,4 @@
-from ..nn import Layer, Activation
+from neuranet.nn import Layer, Activation
 from typing import List
 from abc import ABC, abstractmethod
 

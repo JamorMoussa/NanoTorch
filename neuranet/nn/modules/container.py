@@ -1,7 +1,6 @@
-from .base import Module, Layer
+from ..base import Module, Layer
 from neuranet import Tensor
 from typing import List
-from .. import Tensor
 
 __all__ = ["Sequential"]
 
@@ -17,6 +16,3 @@ class Sequential(Module):
         for layer in self.layers():
             out = layer(out)
         return out  
-    
-    def backward(self, out_grad: Tensor) -> Tensor:
-        raise NotImplemented

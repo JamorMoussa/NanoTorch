@@ -1,4 +1,4 @@
-from .. import Tensor, multiply, tensor2strings
+from neuranet import Tensor, multiply, tensor2strings
 from abc import ABC, abstractmethod
 from typing import List, Callable, Self
 
