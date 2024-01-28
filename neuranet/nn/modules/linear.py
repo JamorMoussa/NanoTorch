@@ -1,6 +1,6 @@
-from typing import Tuple
-from ..base import Layer
 from neuranet import Tensor, rand, zeros, dot 
+from neuranet.nn.base import Layer
+from typing import Tuple
 
 __all__ = ["Linear", ]
 

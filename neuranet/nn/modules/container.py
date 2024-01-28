@@ -1,6 +1,6 @@
 from neuranet.nn.base import Module, Layer
 from neuranet import Tensor
-from typing import List, Tuple
+from typing import Tuple
 
 __all__ = ["Sequential"]
 
