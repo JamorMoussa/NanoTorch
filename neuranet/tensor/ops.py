@@ -1,5 +1,5 @@
 from typing import Tuple, Any
-from .tensor import Tensor
+from . import Tensor
 import numpy as np 
 
 

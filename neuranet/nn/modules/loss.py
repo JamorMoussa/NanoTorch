@@ -1,6 +1,6 @@
-from abc import ABC, abstractmethod
-from ...nn import Layer, Module
-from ... import Tensor, sum
+from abc import abstractmethod
+from neuranet.nn import Layer, Module
+from neuranet import Tensor
 from neuranet import Tensor, zeros, norm
 from typing import List, Self
 
@@ -25,7 +25,7 @@ class Loss(Module):
         for layer in reversed(self.layers):
             out_grad = layer.backward(out_grad)
 
-    def items(self):
+    def item(self):
         return self._item
 
 
