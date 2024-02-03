@@ -1,4 +1,4 @@
-from neuranet import Tensor, multiply, tensor2strings
+from neuranet import Tensor, multiply, tensor2strings, zeros
 from abc import ABC, abstractmethod
 from typing import List, Callable, Self
 
@@ -34,6 +34,7 @@ class Module(ABC):
 class Layer(Module):
     _parameter: Tensor
     _grad: Tensor
+    requires_grad: bool = False
 
     def __init__(self):
         super().__init__()
@@ -52,10 +53,10 @@ class Layer(Module):
     
     @grad.setter
     def grad(self, grad: Tensor) -> None:
-        self._grad = grad 
+        self._grad =  grad
 
     def zero_grad(self):
-        self._grad = None
+        self.grad = zeros(*self.parameter.shape)
 
     def __repr__(self) -> str:
         pram_str = tensor2strings(self._parameter
