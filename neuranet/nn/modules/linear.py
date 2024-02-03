@@ -5,12 +5,14 @@ from typing import Tuple
 __all__ = ["Linear", ]
 
 class Linear(Layer):
+    
+    requires_grad: bool = True 
 
     def __init__(self, *shape: Tuple[int]):
         super().__init__()
 
-        self._parameter: Tensor = rand(*shape)
-        self._grad: Tensor = zeros(*shape)
+        self.parameter: Tensor = rand(*shape)
+        self.grad: Tensor = zeros(*shape)
 
         self.input: Tensor = zeros(*shape)
         self.p_shape: Tuple[int] = shape
