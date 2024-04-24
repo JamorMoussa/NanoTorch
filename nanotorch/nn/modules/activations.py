@@ -1,5 +1,5 @@
-from neuranet.nn.base import Activation
-import neuranet.nn.functional as F 
+from nanotorch.nn.base import Activation
+import nanotorch.nn.functional as F 
 
 __all__ = ["ReLU"]
 

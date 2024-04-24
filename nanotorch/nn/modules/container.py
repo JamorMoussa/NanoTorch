@@ -1,5 +1,5 @@
-from neuranet.nn.base import Module, Layer
-from neuranet import Tensor
+from nanotorch.nn.base import Module, Layer
+from nanotorch import Tensor
 from typing import Tuple
 
 __all__ = ["Sequential"]

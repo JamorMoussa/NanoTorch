@@ -1,5 +1,5 @@
-from neuranet import Tensor, zeros, norm
-from neuranet.nn import Layer, Module
+from nanotorch import Tensor, zeros, norm
+from nanotorch.nn import Layer, Module
 from abc import abstractmethod
 from typing import List, Self
 

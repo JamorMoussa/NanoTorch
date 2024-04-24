@@ -1,4 +1,4 @@
-from neuranet.nn import Layer, Activation
+from nanotorch.nn import Layer, Activation
 from typing import List, Tuple
 from abc import ABC, abstractmethod
 

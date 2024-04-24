@@ -1,5 +1,5 @@
-from neuranet import Tensor, rand, zeros, dot 
-from neuranet.nn.base import Layer
+from nanotorch import Tensor, rand, zeros, dot 
+from nanotorch.nn.base import Layer
 from typing import Tuple
 
 __all__ = ["Linear", ]

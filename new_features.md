@@ -12,8 +12,8 @@ When utilizing the Sequential module in the neuranet library, there are two appr
 ### First Method: Using the Constructor
 
 ```python
-import neuranet as nnt
-import neuranet.nn as nn
+import nanotorch as nnt
+import nanotorch.nn as nn
 
 model = nn.Sequential(
     nn.Linear(2, 3),
@@ -25,8 +25,8 @@ model = nn.Sequential(
 ### Second Method: Adding Layers
 
 ```python
-import neuranet as nnt
-import neuranet.nn as nn
+import nanotorch as nnt
+import nanotorch.nn as nn
 
 model = nn.Sequential()
 

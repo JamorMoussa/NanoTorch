@@ -1,4 +1,4 @@
-from neuranet import Tensor, multiply, tensor2strings, zeros
+from nanotorch import Tensor, multiply, tensor2strings, zeros
 from abc import ABC, abstractmethod
 from typing import List, Callable, Self
 

@@ -1,5 +1,5 @@
 from typing import List, Tuple
-from neuranet.nn import Layer
+from nanotorch.nn import Layer
 from . import Optimizer
 
 
