@@ -1,5 +1,5 @@
-import neuranet as nnt
-import neuranet.nn as nn
+import nanotorch as nnt
+import nanotorch.nn as nn
 
 
 # define the train dataset : 

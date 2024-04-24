@@ -1,4 +1,4 @@
-from neuranet import Tensor, where
+from nanotorch import Tensor, where
 
 __all__ = ["relu"]
 

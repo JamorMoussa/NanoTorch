@@ -1,6 +1,6 @@
-# NeuraNet
+# NanoTorch
 
-**NeuraNet** is a deep learning library (micro-framework) inspired by the PyTorch framework, which 
+**NanoTorch** is a deep learning library (micro-framework) inspired by the PyTorch framework, which 
 I created using only **Math** and **Numpy** :). My purpose here is not to create a powerful deep 
 learning framework (maybe in the future), but solely to understand how deep learning frameworks like PyTorch and TensorFlow work behind the scenes.
 
@@ -10,11 +10,11 @@ Explore the latest enhancements and additions in this update by checking the new
 
 ## Neural Networks:
 
-Let's explore an example of building a simple neural network (essentially a Linear Regression model) with **NeuraNet**:
+Let's explore an example of building a simple neural network (essentially a Linear Regression model) with **NanoTorch**:
 
 ```python
-import neuranet as nnt
-import neuranet.nn as nn 
+import nanotorch as nnt
+import nanotorch.nn as nn 
 
 class MLP(nn.Module):
 
