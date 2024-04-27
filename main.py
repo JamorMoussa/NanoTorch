@@ -19,16 +19,18 @@ mse = nn.MSELoss(model.layers())
 # define the optimizer: 
 opt = nnt.optim.GD(model.layers(), lr=0.1)
 
+batch_size = 10
+
 # traning loop: 
 for epoch in range(100):
 
-    for i in range(0, 1000, 10):
+    for i in range(0, 1000, batch_size):
 
         opt.zero_grad()
 
-        y_predi = model(nnt.Tensor(X_train[i:i+10]))
+        y_predi = model(nnt.Tensor(X_train[i:i+batch_size]))
 
-        loss = mse(y_predi, nnt.Tensor(y_train[i:i+10]))
+        loss = mse(y_predi, nnt.Tensor(y_train[i:i+batch_size]))
 
         if i%1000 == 0:
             print(loss.item())

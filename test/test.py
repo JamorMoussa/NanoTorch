@@ -1,4 +1,4 @@
-import neuranet as nnt 
+import nanotorch as nnt 
 import unittest
 
 class Test(unittest.TestCase):
