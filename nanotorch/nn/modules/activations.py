@@ -16,7 +16,14 @@ class ReLU(Activation):
 
 
 class Sigmoid(Activation):
-    
+    """ 
+        Sigmoid activation function.
+        
+        Attributes:
+            active_func (function): The sigmoid activation function.
+            active_prime (function): The derivative of the sigmoid activation function.
+          
+    """
     def __init__(self) -> None:
 
         super(Sigmoid, self).__init__(
