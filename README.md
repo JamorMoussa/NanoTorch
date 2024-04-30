@@ -21,9 +21,11 @@ class MLPModel(nn.Module):
     def __init__(self):
 
         self.fc = nn.Sequential(
-            nn.Linear(3, 2),
-            nn.ReLU(),
-            nn.Linear(2, 1)
+            nn.Linear(3, 3),
+            nn.Sigmoid(),
+            nn.Linear(3, 5),
+            nn.Sigmoid(), 
+            nn.Linear(5, 1)
         )
 
     def forward(self, input: nnt.Tensor) -> nnt.Tensor:
@@ -32,8 +34,8 @@ class MLPModel(nn.Module):
 Let's generate a simple dataset, using the `nn.rand` function and the `nnt.dot` operation:
 
 ```python
-X_train = nnt.rand(100, 3)
-y = nnt.dot(X_train, nnt.Tensor([1, -2, 3]).T)    
+X = nnt.rand(100, 3)
+y = nnt.dot(X, nnt.Tensor([1, -2, 3]).T)    
 ```
 
 Now, let's create an instance of `MlpModel`
@@ -58,7 +60,7 @@ Finally, The training loop
 ```python
 for epoch in range(30):
 
-    for xi, yi in zip(X_train, y):
+    for xi, yi in zip(X, y):
 
         opt.zero_grad()
 
@@ -76,7 +78,7 @@ print(model.layers()[0].parameter)
 The output is as follows:
 
 ```
-[[ 0.99887237]
- [-1.99063777]
- [ 2.99119258]]
+[[1.00772484]
+ [1.98651816]
+ [3.04503581]]
 ```

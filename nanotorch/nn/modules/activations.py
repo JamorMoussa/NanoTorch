@@ -10,8 +10,8 @@ class ReLU(Activation):
     def __init__(self) -> None:
 
         super(ReLU, self).__init__(
-            F.relu,
-            lambda tensor: where(tensor <= 0, 0, 1) 
+            active_func = F.relu,
+            active_prime = F.relu_prime 
         )
 
 
