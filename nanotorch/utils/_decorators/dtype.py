@@ -1,4 +1,3 @@
-from nanotorch import Tensor
 import functools
 
 __all__ = ["input_as", ]
