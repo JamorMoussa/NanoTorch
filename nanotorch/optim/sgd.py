@@ -3,17 +3,17 @@ from nanotorch.nn import Layer
 from . import Optimizer
 
 
-__all__ = ["GD"] 
+__all__ = ["SGD"] 
 
 
-class GD(Optimizer):
+class SGD(Optimizer):
     lr : float
     _layers_require_grad: Tuple[Layer]
     def __init__(
             self, layers: List[Layer],
             lr: float         
     ) -> None:
-        super(GD, self).__init__(layers)
+        super(SGD, self).__init__(layers)
         self.lr: float = lr 
 
     def step(self) -> None:

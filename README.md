@@ -49,10 +49,10 @@ We are dealing with regression task. So, the `nn.MSELoss` is chosen
 mse = nn.MSELoss(model.layers())
 ```
 
-Let's define the gradient descent optimizer
+Let's define the stochastic gradient descent optimizer
 
 ```python
-opt = nnt.optim.GD(model.layers(), lr=0.001)
+opt = nnt.optim.SGD(model.layers(), lr=0.001)
 ```
 
 Finally, The training loop
