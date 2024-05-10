@@ -28,7 +28,7 @@ model = MLPModel()
 
 mse = nn.MSELoss(model.layers())
 
-opt = optim.GD(model.layers(), lr=0.1)
+opt = optim.SGD(model.layers(), lr=0.1)
 
 for epoch in range(100):
 
