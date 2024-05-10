@@ -1,5 +1,4 @@
-
-site_name: NanoTorch is Deep Learning Library from scratch using Numpy and Math. 
+site_name: NanoTorch is Deep Learning Library
 site_url: 
 site_description: Explore the NanoTorch Library.
 
@@ -14,7 +13,7 @@ theme:
     - navigation.top
     - navigation.tabs
   palette:
-    primary: black
+    #primary: black
 
 markdown_extensions:
   - meta
@@ -26,27 +25,25 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
 
-
-  
 plugins:
- - mkdocs-jupyter:
-    include_source: True
- - search
- - social
+   - mkdocs-jupyter:
+       include_source: True
+   - search
 
-edit_uri: ""
+edit_uri: https://github.com/JamorMoussa/NanoTorch/edit/main/docs/
 
 site_author: Moussa JAMOR
 
+
 nav:
   - Home: 'index.md'
+  - Docs:
+    - 'docs/index.md'
 
 
 extra_javascript:
-  - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-
 
 extra:
   social:
@@ -54,6 +51,3 @@ extra:
       link: https://www.linkedin.com/in/moussa-jamor-b17a58253/
     - icon: fontawesome/brands/github
       link: https://github.com/JamorMoussa/
-    # - icon: fontawesome/brands/youtube
-    #   link: https://www.youtube.com/channel/UCr8O8l5cCX85Oem1d18EezQ
-
