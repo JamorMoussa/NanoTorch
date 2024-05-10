@@ -1,0 +1,53 @@
+site_name: NanoTorch is Deep Learning Library
+site_url: 
+site_description: Explore the NanoTorch Library.
+
+repo_url: https://github.com/JamorMoussa/NanoTorch
+repo_name: JamorMoussa/NanoTorch
+
+docs_dir: docs
+
+theme:
+  name: material
+  features:
+    - navigation.top
+    - navigation.tabs
+  palette:
+    #primary: black
+
+markdown_extensions:
+  - meta
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+plugins:
+   - mkdocs-jupyter:
+       include_source: True
+   - search
+
+edit_uri: https://github.com/JamorMoussa/NanoTorch/edit/main/docs/
+
+site_author: Moussa JAMOR
+
+
+nav:
+  - Home: 'index.md'
+  - Docs:
+    - 'docs/index.md'
+
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra:
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/moussa-jamor-b17a58253/
+    - icon: fontawesome/brands/github
+      link: https://github.com/JamorMoussa/
