@@ -33,6 +33,8 @@ class Tensor(np.ndarray):
                         [2],
                         [3]])
         """
+
+        if isinstance(input, (int, float)): input = np.array([input,])
         
         if not isinstance(input, (Tensor, list, tuple, np.ndarray)): 
             raise ValueError(f"the 'input' attributes must be list, tuple, numpy.ndarray. But '{input.__class__.__name__}' is given") 
