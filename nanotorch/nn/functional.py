@@ -14,5 +14,9 @@ def relu_prime(input: Tensor) -> Tensor:
 
 @input_as(DType = Tensor)
 def sigmoid(input: Tensor)-> Tensor:
-    return Tensor(1/(1 + np.exp(-input)))
+    if input > 0:
+        return Tensor(1/(1 + np.exp(-input)))
+    else:
+        return Tensor(np.exp(input)/(1 + np.exp(input)))
+
 
