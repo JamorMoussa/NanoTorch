@@ -9,9 +9,9 @@ class MLPModel(nn.Module):
 
         self.fc = nn.Sequential(
             nn.Linear(3, 3),
-            nn.Sigmoid(),
+            nn.ReLU(),
             nn.Linear(3, 5),
-            nn.Sigmoid(), 
+            nn.ReLU(), 
             nn.Linear(5, 1)
         )
 
@@ -19,7 +19,7 @@ class MLPModel(nn.Module):
         return self.fc(input)
     
 
-X = nnt.rand(100, 3)
+X = nnt.rand(1000, 3)
 y = nnt.dot(X, nnt.Tensor([1, 2, 3]).T) 
 
 
@@ -28,17 +28,17 @@ model = MLPModel()
 
 mse = nn.MSELoss(model.layers())
 
-opt = optim.SGD(model.layers(), lr=0.1)
+opt = optim.SGD(model.layers(), lr=0.01)
 
 for epoch in range(100):
 
-    for xi, yi in zip(X, y):
+    for i in range(0, 1000, 50):
 
         opt.zero_grad()
 
-        y_predi = model(nnt.Tensor(xi))
+        y_predi = model(nnt.Tensor(X[i:i+50]))
 
-        loss = mse(y_predi, nnt.Tensor(yi))
+        loss = mse(y_predi, nnt.Tensor(y[i:i+50]))
 
         loss.backward()
 
