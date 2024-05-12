@@ -18,5 +18,5 @@ class SGD(Optimizer):
 
     def step(self) -> None:
         for layer in self._layers_require_grad:
-            layer.parameter -= self.lr * layer.grad
+            layer.parameter.data -= self.lr * layer.grad
     

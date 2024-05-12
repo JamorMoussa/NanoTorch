@@ -1,6 +1,7 @@
 from nanotorch import Tensor, multiply, tensor2strings, zeros
 from abc import ABC, abstractmethod
 from typing import List, Callable, Self
+from .parameter import Parameter
 
 
 __all__ = ["Module", "Layer", "Activation"]
@@ -13,7 +14,6 @@ class Module(ABC):
         super().__setattr__(name, value)
         if isinstance(value, Layer): self.add_module(value)
 
-    
     def add_module(self, module: Self) -> None: 
         self._modules.append(module)
     
@@ -32,7 +32,7 @@ class Module(ABC):
 
 
 class Layer(Module):
-    _parameter: Tensor
+    _parameter: Parameter
     _grad: Tensor
     requires_grad: bool = False
 
@@ -40,11 +40,12 @@ class Layer(Module):
         super().__init__()
 
     @property
-    def parameter(self) -> Tensor:
+    def parameter(self) -> Parameter:
         return self._parameter
     
     @parameter.setter
-    def parameter(self, parameter: Tensor) -> None:
+    def parameter(self, parameter: Parameter) -> None:
+        assert isinstance(parameter, Parameter), "the input is not Parameter type"
         self._parameter = parameter 
 
     @property
@@ -56,7 +57,7 @@ class Layer(Module):
         self._grad =  grad
 
     def zero_grad(self):
-        self.grad = zeros(*self.parameter.shape)
+        self.grad = zeros(*self.parameter.data.shape)
 
     def __repr__(self) -> str:
         pram_str = tensor2strings(self._parameter
