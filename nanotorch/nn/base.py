@@ -1,7 +1,6 @@
 from nanotorch import Tensor, multiply, tensor2strings, zeros
 from abc import ABC, abstractmethod
 from typing import List, Callable, Self
-from .parameter import Parameter
 
 
 __all__ = ["Module", "Layer", "Activation"]
@@ -32,42 +31,12 @@ class Module(ABC):
 
 
 class Layer(Module):
-    _parameter: Parameter
-    _grad: Tensor
-    requires_grad: bool = False
 
-    def __init__(self):
-        super().__init__()
+    requires_grad: bool = False 
 
-    @property
-    def parameter(self) -> Parameter:
-        return self._parameter
-    
-    @parameter.setter
-    def parameter(self, parameter: Parameter) -> None:
-        assert isinstance(parameter, Parameter), "the input is not Parameter type"
-        self._parameter = parameter 
+    def __init__(self) -> None:
+        super(Layer, self).__init__()
 
-    @property
-    def grad(self) -> Tensor:
-        return self._grad
-    
-    @grad.setter
-    def grad(self, grad: Tensor) -> None:
-        self._grad =  grad
-
-    def zero_grad(self):
-        self.grad = zeros(*self.parameter.data.shape)
-
-    def __repr__(self) -> str:
-        pram_str = tensor2strings(self._parameter
-                                  ).replace('\n ', '\n\t\t')
-        
-        grad_str = tensor2strings(self.grad
-                                  ).replace('\n ', '\n\t\t')
-        
-        return f"{self.__class__.__name__}(\n\tParamerts:\n\t\t{pram_str}\n\tgrad:\n\t\t{grad_str}\n)"
-    
 
 class Activation(Layer):
     def __init__(self, active_func: Callable[[Tensor], Tensor], active_prime: Callable[[Tensor], Tensor]) -> None:
