@@ -15,6 +15,9 @@ theme:
   palette:
     #primary: black
 
+  font:
+      text: "Segoe UI"
+
 markdown_extensions:
   - meta
   - pymdownx.highlight
@@ -24,6 +27,7 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+
 
 plugins:
    - mkdocs-jupyter:
@@ -35,10 +39,14 @@ edit_uri: https://github.com/JamorMoussa/NanoTorch/edit/main/docs/
 site_author: Moussa JAMOR
 
 
+extra_css:
+ - css/extra.css
+
+
 nav:
   - Home: 'index.md'
   - Docs:
-    - 'docs/index.md'
+    - Tensor: 'docs/tensor/tensor.ipynb'
 
 
 extra_javascript:

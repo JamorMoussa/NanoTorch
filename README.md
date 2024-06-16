@@ -38,7 +38,7 @@ X = nnt.rand(100, 3)
 y = nnt.dot(X, nnt.Tensor([1, -2, 3]).T)    
 ```
 
-Now, let's create an instance of `MlpModel`
+Now, let's create an instance of `MLPModel`
 ```python
 model = MLPModel()
 ```
