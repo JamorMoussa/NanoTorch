@@ -46,7 +46,9 @@ extra_css:
 nav:
   - Home: 'index.md'
   - Docs:
-    - Tensor: 'docs/tensor/tensor.ipynb'
+    - Linear: 'docs/nanotorch-linear-layer.ipynb'
+  #  - Tensor: 'docs/tensor/tensor.ipynb'
+
 
 
 extra_javascript:
