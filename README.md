@@ -1,3 +1,11 @@
+<div>
+    <center>
+        <img src="./docs/images/logo.png" width="300px">
+    </center>
+
+</div>
+
+
 # NanoTorch
 
 **NanoTorch** is a deep learning library (micro-framework) inspired by the PyTorch framework, which 
