@@ -1,9 +1,5 @@
-<div>
-    <center>
-        <img src="./docs/images/logo.png" width="300px">
-    </center>
+![]("/docs/images/logo.png")
 
-</div>
 
 
 # NanoTorch
