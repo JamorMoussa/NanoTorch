@@ -1,4 +1,4 @@
-![]("/docs/images/logo.png")
+![]("[/docs/images/logo.png](https://raw.githubusercontent.com/JamorMoussa/NanoTorch/main/docs/images/logo.png)")
 
 
 
